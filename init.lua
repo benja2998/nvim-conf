@@ -24,7 +24,8 @@ require("lazy").setup({
     { "ishan9299/nvim-solarized-lua" },
     { "nvim-tree/nvim-tree.lua" },
     { "akinsho/bufferline.nvim" },
-    { "windwp/nvim-autopairs" } -- auto-pairs
+    { "windwp/nvim-autopairs" }, -- auto-pairs
+    { "nvim-telescope/telescope.nvim", dependencies = { "nvim-lua/plenary.nvim" } }, -- telescope
 })
 
 require("lualine").setup({
@@ -112,4 +113,38 @@ require('nvim-autopairs').setup({
     enable_check_bracket_line = true,
     enable_moveright = true,
 })
+
+-- Telescope setup
+local telescope = require("telescope")
+local actions = require("telescope.actions")
+
+telescope.setup({
+    defaults = {
+        prompt_prefix = " ",
+        selection_caret = " ",
+        path_display = { "smart" },
+        sorting_strategy = "ascending",
+        layout_strategy = "flex",
+        layout_config = {
+            vertical = { mirror = false },
+            horizontal = { mirror = false, width = 0.9, height = 0.8 },
+        },
+        mappings = {
+            i = {
+                ["<esc>"] = actions.close,
+            },
+            n = {
+                ["q"] = actions.close,
+            },
+        },
+    },
+})
+
+local builtin = require("telescope.builtin")
+
+-- Telescope keymaps
+vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = "Find Files" })
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = "Live Grep" })
+vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = "List Buffers" })
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = "Help Tags" })
 
