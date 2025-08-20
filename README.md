@@ -8,3 +8,5 @@ cd ~/.nvim-conf
 ./install
 ```
 
+For Windows users, there is a `install.bat` file.
+
