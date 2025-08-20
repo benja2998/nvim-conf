@@ -23,7 +23,8 @@ require("lazy").setup({
     { "neoclide/coc.nvim", branch = "release" },
     { "ishan9299/nvim-solarized-lua" },
     { "nvim-tree/nvim-tree.lua" },
-    { "akinsho/bufferline.nvim" }
+    { "akinsho/bufferline.nvim" },
+    { "windwp/nvim-autopairs" } -- auto-pairs
 })
 
 require("lualine").setup({
@@ -41,8 +42,10 @@ vim.keymap.set("n", "gr", "<Plug>(coc-references)", { silent = true })
 -- Hover info
 vim.keymap.set("n", "K", ":call CocActionAsync('doHover')<CR>", { silent = true })
 -- Tab completion in insert mode
-vim.keymap.set("i", "<Tab>", 'pumvisible() ? "<C-n>" : "<Tab>"', { expr = true, silent = true })
-vim.keymap.set("i", "<S-Tab>", 'pumvisible() ? "<C-p>" : "<S-Tab>"', { expr = true, silent = true })
+vim.keymap.set("i", "<Tab>", 
+  [[coc#pum#visible() ? coc#pum#confirm() : "\<Tab>"]],
+  { expr = true, silent = true }
+)
 
 vim.cmd([[colorscheme solarized]])
 vim.o.background = "dark"  -- ensures dark variant
@@ -102,4 +105,11 @@ vim.keymap.set("n", "<S-Tab>", ":bprevious<CR>", { silent = true })
 vim.keymap.set("n", "<leader>c", ":bdelete<CR>", { silent = true })
 
 vim.api.nvim_set_keymap('n', '<leader>n', ':tabnew<CR>', { noremap = true, silent = true })
+
+-- nvim-autopairs setup
+require('nvim-autopairs').setup({
+    check_ts = true,
+    enable_check_bracket_line = true,
+    enable_moveright = true,
+})
 
