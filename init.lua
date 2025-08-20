@@ -24,8 +24,31 @@ require("lazy").setup({
     { "ishan9299/nvim-solarized-lua" },
     { "nvim-tree/nvim-tree.lua" },
     { "akinsho/bufferline.nvim" },
-    { "windwp/nvim-autopairs" }, -- auto-pairs
-    { "nvim-telescope/telescope.nvim", dependencies = { "nvim-lua/plenary.nvim" } }, -- telescope
+    { "windwp/nvim-autopairs" },
+    { "nvim-telescope/telescope.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
+    {
+        "MagicDuck/grug-far.nvim",
+        keys = {
+            {
+                "<leader>sr",
+                function()
+                    local grug = require("grug-far")
+                    local ext = vim.bo.buftype == "" and vim.fn.expand("%:e")
+                    grug.open({
+                        transient = true,
+                        prefills = {
+                            filesFilter = ext and ext ~= "" and "*." .. ext or nil,
+                            regex = true,
+                            confirm = true,
+                        },
+                    })
+                end,
+                mode = { "n", "v" },
+                desc = "Search and Replace (regex)",
+            },
+        },
+    },
+
 })
 
 require("lualine").setup({
