@@ -26,6 +26,20 @@ require("lazy").setup({
     { "akinsho/bufferline.nvim" },
     { "windwp/nvim-autopairs" },
     { "nvim-telescope/telescope.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
+
+    -- catppuccin theme (mocha)
+    {
+        "catppuccin/nvim",
+        name = "catppuccin",
+        config = function()
+            require("catppuccin").setup({
+                flavour = "mocha", -- latte, frappe, macchiato, mocha
+            })
+            vim.cmd("colorscheme catppuccin")
+            vim.o.background = "dark"
+        end,
+    },
+
     {
         "MagicDuck/grug-far.nvim",
         keys = {
@@ -70,9 +84,6 @@ vim.keymap.set("i", "<Tab>",
   [[coc#pum#visible() ? coc#pum#confirm() : "\<Tab>"]],
   { expr = true, silent = true }
 )
-
-vim.cmd([[colorscheme solarized]])
-vim.o.background = "dark"  -- ensures dark variant
 
 -- nvim-tree setup
 require("nvim-tree").setup({
@@ -170,4 +181,3 @@ vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = "Find Files" })
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = "Live Grep" })
 vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = "List Buffers" })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = "Help Tags" })
-
