@@ -65,6 +65,8 @@ require("lazy").setup({
 
 })
 
+vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], { noremap = true })
+
 require("lualine").setup({
     options = {
         theme = "auto", -- picks from current colorscheme
