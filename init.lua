@@ -65,6 +65,8 @@ require("lazy").setup({
 
 })
 
+vim.o.guifont = "CaskaydiaCove Nerd Font Mono:h14"
+
 require("lualine").setup({
     options = {
         theme = "auto", -- picks from current colorscheme
