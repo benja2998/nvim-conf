@@ -24,7 +24,6 @@ require("lazy").setup({
     { "ishan9299/nvim-solarized-lua" },
     { "nvim-tree/nvim-tree.lua" },
     { "akinsho/bufferline.nvim" },
-    { "windwp/nvim-autopairs" },
     { "nvim-telescope/telescope.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
 
     -- catppuccin theme (mocha)
@@ -145,11 +144,13 @@ vim.keymap.set("n", "<leader>c", ":bdelete<CR>", { silent = true })
 vim.api.nvim_set_keymap('n', '<leader>n', ':tabnew<CR>', { noremap = true, silent = true })
 
 -- nvim-autopairs setup
+--[[
 require('nvim-autopairs').setup({
     check_ts = true,
     enable_check_bracket_line = true,
     enable_moveright = true,
 })
+]]
 
 -- Telescope setup
 local telescope = require("telescope")
