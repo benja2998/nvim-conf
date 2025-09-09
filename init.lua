@@ -62,25 +62,22 @@ require("lazy").setup({
         },
     },
 {
-    "christoomey/vim-tmux-navigator",
-    config = function()
-        -- Enable seamless navigation between vim and tmux panes
-        vim.g.tmux_navigator_no_mappings = 1  -- disable default mappings if you want custom ones
-
-        -- Custom keymaps (matching your tmux bindings)
-        vim.keymap.set("n", "<C-h>", "<cmd>TmuxNavigateLeft<CR>", { silent = true })
-        vim.keymap.set("n", "<C-j>", "<cmd>TmuxNavigateDown<CR>", { silent = true })
-        vim.keymap.set("n", "<C-k>", "<cmd>TmuxNavigateUp<CR>", { silent = true })
-        vim.keymap.set("n", "<C-l>", "<cmd>TmuxNavigateRight<CR>", { silent = true })
-        vim.keymap.set("i", "<C-h>", "<cmd>TmuxNavigateLeft<CR>", { silent = true })
-        vim.keymap.set("i", "<C-j>", "<cmd>TmuxNavigateDown<CR>", { silent = true })
-        vim.keymap.set("i", "<C-k>", "<cmd>TmuxNavigateUp<CR>", { silent = true })
-        vim.keymap.set("i", "<C-l>", "<cmd>TmuxNavigateRight<CR>", { silent = true })
-        vim.keymap.set("t", "<C-h>", "<C-\\><C-n><cmd>TmuxNavigateLeft<CR>", { silent = true })
-        vim.keymap.set("t", "<C-j>", "<C-\\><C-n><cmd>TmuxNavigateDown<CR>", { silent = true })
-        vim.keymap.set("t", "<C-k>", "<C-\\><C-n><cmd>TmuxNavigateUp<CR>", { silent = true })
-        vim.keymap.set("t", "<C-l>", "<C-\\><C-n><cmd>TmuxNavigateRight<CR>", { silent = true })
-    end,
+  "christoomey/vim-tmux-navigator",
+  cmd = {
+    "TmuxNavigateLeft",
+    "TmuxNavigateDown",
+    "TmuxNavigateUp",
+    "TmuxNavigateRight",
+    "TmuxNavigatePrevious",
+    "TmuxNavigatorProcessList",
+  },
+  keys = {
+    { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
+    { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
+    { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
+    { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
+    { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
+  },
 }
 })
 
