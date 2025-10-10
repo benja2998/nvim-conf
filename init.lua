@@ -26,16 +26,15 @@ require("lazy").setup({
     { "akinsho/bufferline.nvim" },
     { "nvim-telescope/telescope.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
 
-    -- catppuccin theme (mocha)
     {
         "catppuccin/nvim",
         name = "catppuccin",
         config = function()
             require("catppuccin").setup({
-                flavour = "mocha", -- latte, frappe, macchiato, mocha
+                flavour = "latte",
             })
-            vim.cmd("colorscheme catppuccin")
-            vim.o.background = "dark"
+            vim.cmd("colorscheme catppuccin-latte")
+            vim.o.background = "light"
         end,
     },
 
