@@ -33,8 +33,8 @@ require("lazy").setup({
             require("catppuccin").setup({
                 flavour = "latte",
             })
-            vim.cmd("colorscheme catppuccin-latte")
-            vim.o.background = "light"
+--            vim.cmd("colorscheme catppuccin-latte")
+--            vim.o.background = "light"
         end,
     },
 
