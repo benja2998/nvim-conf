@@ -15,6 +15,8 @@ vim.opt.rtp:prepend(lazypath)
 -- highlight current line
 vim.opt.cursorline = true
 
+vim.opt.background = "light"
+
 require("lazy").setup({
     {"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
     {"neovim/nvim-lspconfig"},
@@ -25,18 +27,6 @@ require("lazy").setup({
     { "nvim-tree/nvim-tree.lua" },
     { "akinsho/bufferline.nvim" },
     { "nvim-telescope/telescope.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
-
-    {
-        "catppuccin/nvim",
-        name = "catppuccin",
-        config = function()
-            require("catppuccin").setup({
-                flavour = "latte",
-            })
---            vim.cmd("colorscheme catppuccin-latte")
---            vim.o.background = "light"
-        end,
-    },
 
     {
         "MagicDuck/grug-far.nvim",
