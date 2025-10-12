@@ -15,8 +15,6 @@ vim.opt.rtp:prepend(lazypath)
 -- highlight current line
 vim.opt.cursorline = true
 
-vim.opt.background = "light"
-
 require("lazy").setup({
     {"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
     {"neovim/nvim-lspconfig"},
