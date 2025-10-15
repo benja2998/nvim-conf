@@ -18,12 +18,7 @@ vim.opt.cursorline = true
 require("lazy").setup({
     {"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
     {"neovim/nvim-lspconfig"},
-    { "nvim-lualine/lualine.nvim" },
     { "nvim-tree/nvim-web-devicons" },
-    { "neoclide/coc.nvim", branch = "release" },
-    { "ishan9299/nvim-solarized-lua" },
-    { "nvim-tree/nvim-tree.lua" },
-    { "akinsho/bufferline.nvim" },
     { "nvim-telescope/telescope.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
 
     {
@@ -71,14 +66,6 @@ require("lazy").setup({
 vim.o.guifont = "CaskaydiaCove Nerd Font Mono:h14"
 vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], { noremap = true })
 
-require("lualine").setup({
-    options = {
-        theme = "auto", -- picks from current colorscheme
-        section_separators = { left = "", right = "" },
-        component_separators = { left = "", right = "" },
-    },
-})
-
 -- Go to definition
 vim.keymap.set("n", "gd", "<Plug>(coc-definition)", { silent = true })
 -- Show references
@@ -91,32 +78,6 @@ vim.keymap.set("i", "<Tab>",
   { expr = true, silent = true }
 )
 
--- nvim-tree setup
-require("nvim-tree").setup({
-    sort_by = "name",
-    view = {
-        width = 30,
-        side = "left",
-    },
-    renderer = {
-        highlight_git = true,
-        icons = {
-            show = {
-                file = true,
-                folder = true,
-                folder_arrow = true,
-                git = true,
-            },
-        },
-    },
-    git = {
-        enable = true,
-    },
-})
-
--- Toggle nvim-tree with <leader>e
-vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", { silent = true })
-
 -- Navigate windows with Ctrl + hjkl
 --[[
 vim.keymap.set("n", "<C-h>", "<C-w>h", { silent = true })
@@ -125,24 +86,11 @@ vim.keymap.set("n", "<C-k>", "<C-w>k", { silent = true })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { silent = true })
 ]]
 
-require("bufferline").setup{
-    options = {
-        numbers = "ordinal",  -- show buffer numbers
-        close_command = "bdelete! %d",  -- close buffer
-        right_mouse_command = "bdelete! %d",
-        left_mouse_command = "buffer %d",
-        diagnostics = "nvim_lsp",
-        show_buffer_icons = true,
-        show_close_icon = true,
-        separator_style = "slant",
-    }
-}
-
 -- Move to next buffer/tab
-vim.keymap.set("n", "<Tab>", ":bnext<CR>", { silent = true })
+vim.keymap.set("n", "<Tab>", ":tabnext<CR>", { silent = true })
 
 -- Move to previous buffer/tab
-vim.keymap.set("n", "<S-Tab>", ":bprevious<CR>", { silent = true })
+vim.keymap.set("n", "<S-Tab>", ":tabprevious<CR>", { silent = true })
 
 -- Close current buffer
 vim.keymap.set("n", "<leader>c", ":bdelete<CR>", { silent = true })
