@@ -72,6 +72,8 @@ vim.keymap.set("n", "gd", "<Plug>(coc-definition)", { silent = true })
 vim.keymap.set("n", "gr", "<Plug>(coc-references)", { silent = true })
 -- Hover info
 vim.keymap.set("n", "K", ":call CocActionAsync('doHover')<CR>", { silent = true })
+-- File explorer
+vim.keymap.set("n", "<leader>e", ":Ex<CR>", { silent = true })
 -- Tab completion in insert mode
 vim.keymap.set("i", "<Tab>", 
   [[coc#pum#visible() ? coc#pum#confirm() : "\<Tab>"]],
