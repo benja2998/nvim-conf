@@ -9,7 +9,6 @@ vim.opt.termguicolors = true
 vim.opt.signcolumn = "yes"
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8
-vim.opt.wrap = false
 vim.opt.linebreak = true
 vim.opt.showmode = false
 
