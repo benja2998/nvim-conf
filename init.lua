@@ -371,13 +371,59 @@ require("lazy").setup({
             { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
         },
     },
+    {
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v3.x",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-web-devicons",
+            "MunifTanjim/nui.nvim",
+        },
+        config = function()
+            require("neo-tree").setup({
+                close_if_last_window = true,
+                enable_git_status = true,
+                enable_diagnostics = true,
+                filesystem = {
+                    filtered_items = {
+                        visible = true,
+                        hide_hidden = false,
+                        hide_dotfiles = false,
+                        hide_gitignored = false,
+                    },
+                    follow_current_file = { enabled = true },
+                    group_empty_dirs = true,
+                },
+                window = {
+                    position = "left",
+                    width = 35,
+                    mappings = {
+                        ["<space>"] = "none",
+                    },
+                },
+                default_component_configs = {
+                    indent = {
+                        with_markers = true,
+                        with_expanders = true,
+                    },
+                    icon = {
+                        folder_closed = "",
+                        folder_open = "",
+                        folder_empty = "",
+                    },
+                },
+            })
+
+            vim.keymap.set('n', '<leader>e', ':Neotree toggle left<CR>', { silent = true, noremap = true, desc = "Toggle file manager" })
+        end,
+    },
 })
 
 vim.o.guifont = "CaskaydiaCove Nerd Font Mono:h14"
 vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], { noremap = true })
 
 -- File explorer
-vim.keymap.set("n", "<leader>e", ":Ex<CR>", { silent = true })
+--vim.keymap.set("n", "<leader>e", ":Ex<CR>", { silent = true })
 
 -- Move to next buffer/tab
 vim.keymap.set("n", "<Tab>", ":tabnext<CR>", { silent = true })
